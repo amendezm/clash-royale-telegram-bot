@@ -13,7 +13,8 @@ const OPTIONS = {
 };
 
 const ENDPOINTS = {
-  clan: "clan/"
+  clan: "clan/",
+  player: "player/"
 };
 
 module.exports.BASE_URL = BASE_URL;
