@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const bot = require("./../bot");
+const bot = require("../bot/bot");
 const constants = require("./../../constants");
 const chestSort = require("./../../utils/chests_sort");
 

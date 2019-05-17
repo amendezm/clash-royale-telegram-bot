@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const bot = require("./bot");
+const bot = require("./bot/bot");
 const constants = require("./../constants");
 const membersFormat = require("./../utils/string_format").membersFormat;
 
@@ -20,7 +20,7 @@ const getMembers = chatId => {
       }));
     })
     .then(array =>
-      array.map(obj => [`${obj.level}`, obj.name, `${obj.trophies}`])
+      array.map(obj => [`Lvl ${obj.level}`, obj.name, `${obj.trophies}`])
     )
     .then(array => membersFormat(array))
     .then(resp => {

@@ -1,6 +1,7 @@
-const bot = require("./services/bot");
+const bot = require("./services/bot/bot");
 const getImage = require("./services/get_image");
-const getCollection = require("./services/collection_day");
+const getCollectionDay = require("./services/collection_day");
+const getWarDay = require("./services/war_day");
 const getMembers = require("./services/members");
 const getChests = require("./services/player/chests");
 const getFavoriteCard = require("./services/player/favorite_card");
@@ -26,9 +27,14 @@ bot.onText(/\/clan_image/, msg => {
   getImage(chatId);
 });
 
-bot.onText(/\/collection_day/, (msg, match) => {
+bot.onText(/\/collection_day/, msg => {
   const chatId = msg.chat.id;
-  getCollection(chatId);
+  getCollectionDay(chatId);
+});
+
+bot.onText(/\/war_day/, msg => {
+  const chatId = msg.chat.id;
+  getWarDay(chatId);
 });
 
 bot.onText(/\/members/, msg => {

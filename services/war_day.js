@@ -1,29 +1,28 @@
 const fetch = require("node-fetch");
 
 const bot = require("./bot/bot");
-const collectionDayFormat = require("./../utils/string_format")
-  .collectionDayFormat;
+const warDayFormat = require("./../utils/string_format").warDayFormat;
 const constants = require("./../constants/index");
 const url = constants.BASE_URL;
 const clan = constants.ENDPOINTS.clan;
 const tag = constants.CLAN_TAG;
 const options = constants.OPTIONS;
 
-const getCollectionDay = chatId => {
-  console.log(`${url}${clan}${tag}/war`);
+const getWarDay = chatId => {
   fetch(`${url}${clan}${tag}/war`, options)
     .then(res => res.json())
     .then(data =>
       data.participants.map(participant => ({
         name: participant.name,
-        cards: participant.cardsEarned,
-        played: participant.collectionDayBattlesPlayed
+        battles: participant.battlesPlayed,
+        wins: participant.wins,
+        cards: participant.cardsEarned
       }))
     )
     .then(array =>
-      array.map(obj => [obj.name, `${obj.cards}`, `${obj.played}`])
+      array.map(obj => [obj.name, `${obj.wins}`, `${obj.battles}`, obj.cards])
     )
-    .then(resp => collectionDayFormat(resp))
+    .then(resp => warDayFormat(resp))
     .then(resp => {
       bot.sendMessage(chatId, resp.join("\n"));
     })
@@ -32,4 +31,4 @@ const getCollectionDay = chatId => {
     });
 };
 
-module.exports = getCollectionDay;
+module.exports = getWarDay;
