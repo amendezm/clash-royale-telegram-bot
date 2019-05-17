@@ -1,14 +1,14 @@
-const BASE_URL = "https://api.royaleapi.com/";
+const TOKEN = require("../config").TOKEN;
+const AUTH = require("../config").AUTH;
 
-const TOKEN = "";
+const BASE_URL = "https://api.royaleapi.com/";
 
 const CLAN_TAG = "PPUUUP2Y";
 
 const OPTIONS = {
   method: "get",
   headers: {
-    auth:
-      ""
+    auth: AUTH
   }
 };
 
