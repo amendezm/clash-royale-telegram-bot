@@ -39,7 +39,7 @@ const membersFormat = membersArray => {
     let value = member[0].length + member[1].length + member[2].length;
     max = value > max ? value : max;
   });
-  return membersArray.map(member => toMemberString(member, max + 10));
+  return membersArray.map(member => toMemberString(member, max + 5));
 };
 
 const toMemberString = (member, max) => {
