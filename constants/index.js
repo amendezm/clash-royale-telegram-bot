@@ -1,6 +1,6 @@
 const BASE_URL = "https://api.royaleapi.com/";
 
-const TOKEN = "778727907:AAEPS8kLgrWikSqzyWc0TMGdvlti3L47CJQ";
+const TOKEN = "";
 
 const CLAN_TAG = "PPUUUP2Y";
 
@@ -8,7 +8,7 @@ const OPTIONS = {
   method: "get",
   headers: {
     auth:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU0OSwiaWRlbiI6IjU0MjcxNjA1Mjg5MTUwMDU1NCIsIm1kIjp7fSwidHMiOjE1NTYyMDE5MjkzNDR9.fXqJjYEf4UDHvlfJANuQf6QL3UjGfg957imWMrceG38"
+      ""
   }
 };
 
