@@ -1,5 +1,4 @@
-const TOKEN = require("../config").TOKEN;
-const AUTH = require("../config").AUTH;
+require("dotenv").config();
 
 const BASE_URL = "https://api.royaleapi.com/";
 
@@ -8,7 +7,7 @@ const CLAN_TAG = "PPUUUP2Y";
 const OPTIONS = {
   method: "get",
   headers: {
-    auth: AUTH
+    auth: process.env.AUTH
   }
 };
 
@@ -18,7 +17,7 @@ const ENDPOINTS = {
 };
 
 module.exports.BASE_URL = BASE_URL;
-module.exports.TOKEN = TOKEN;
+module.exports.TOKEN = process.env.TOKEN;
 module.exports.CLAN_TAG = CLAN_TAG;
 module.exports.OPTIONS = OPTIONS;
 module.exports.ENDPOINTS = ENDPOINTS;
