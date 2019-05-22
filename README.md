@@ -3,14 +3,11 @@
 
 ## Config
 
-A config.js file must be created at the projects's root with this structure:
+A .env file must be created at the projects's root with this structure:
 
 ```code
-const TOKEN = "**********";
-const AUTH = "**********";
-
-module.exports.TOKEN = TOKEN;
-module.exports.AUTH = AUTH;
+TOKEN = **********
+AUTH = **********
 ```
 
 
