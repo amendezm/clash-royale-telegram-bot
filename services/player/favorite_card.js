@@ -9,6 +9,10 @@ const options = constants.OPTIONS;
 
 const getFavoriteCard = (chatId, player_tag) => {
   console.log(player_tag);
+  if (!player_tag) {
+    bot.sendMessage(chatId, "Invalid player tag");
+    return;
+  }
   fetch(`${url}${player}${player_tag}`, options)
     .then(res => res.json())
     .then(player => player.stats.favoriteCard.icon)

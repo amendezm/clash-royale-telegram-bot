@@ -13,13 +13,16 @@ const getCollectionDay = chatId => {
   console.log(`${url}${clan}${tag}/war`);
   fetch(`${url}${clan}${tag}/war`, options)
     .then(res => res.json())
-    .then(data =>
-      data.participants.map(participant => ({
+    .then(data => {
+      if (data.state !== "collectionDay") {
+        throw new Error("It is not collection day");
+      }
+      return data.participants.map(participant => ({
         name: participant.name,
         cards: participant.cardsEarned,
         played: participant.collectionDayBattlesPlayed
-      }))
-    )
+      }));
+    })
     .then(array =>
       array.map(obj => [obj.name, `${obj.cards}`, `${obj.played}`])
     )

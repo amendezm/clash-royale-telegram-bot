@@ -11,14 +11,17 @@ const options = constants.OPTIONS;
 const getWarDay = chatId => {
   fetch(`${url}${clan}${tag}/war`, options)
     .then(res => res.json())
-    .then(data =>
-      data.participants.map(participant => ({
+    .then(data => {
+      if (data.state !== "warDay") {
+        throw new Error("It is not war day");
+      }
+      return data.participants.map(participant => ({
         name: participant.name,
         battles: participant.battlesPlayed,
         wins: participant.wins,
         cards: participant.cardsEarned
-      }))
-    )
+      }));
+    })
     .then(array =>
       array.map(obj => [obj.name, `${obj.wins}`, `${obj.battles}`, obj.cards])
     )

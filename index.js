@@ -53,16 +53,14 @@ bot.onText(/\/members/, msg => {
   getMembers(chatId);
 });
 
-bot.onText(/get_chests (.+)/, (msg, match) => {
+bot.onText(/get_chests/, (msg, match) => {
   const chatId = msg.chat.id;
-  getChests(chatId, match[1]);
+  getChests(chatId, match[1] || membersTags[msg.from.first_name] || "");
 });
 
-bot.onText(/get_favorite_card (.+)/, (msg, match) => {
+bot.onText(/\/get_favorite_card/, (msg, match) => {
   const chatId = msg.chat.id;
-  console.log(msg.from.first_name);
-  console.log(chatId);
-  getFavoriteCard(chatId, match[1]);
+  getFavoriteCard(chatId, match[1] || membersTags[msg.from.first_name] || "");
 });
 
 bot.onText(/my_tag/, msg => {
@@ -74,5 +72,5 @@ bot.on("message", msg => {
   const chatId = msg.chat.id;
   console.log(msg.from.first_name);
   console.log(msg.from.id);
-  bot.sendMessage(chatId, "Received your message");
+  // bot.sendMessage(chatId, "Received your message");
 });
