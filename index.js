@@ -4,6 +4,7 @@ const getCollectionDay = require("./services/collection_day");
 const getWarDay = require("./services/war_day");
 const getWarStandings = require("./services/war_standings");
 const getMembers = require("./services/members");
+const getMembersByDonations = require("./services/donations");
 const getChests = require("./services/player/chests");
 const getFavoriteCard = require("./services/player/favorite_card");
 const getBattles = require("./services/clan_battles");
@@ -51,6 +52,11 @@ bot.onText(/\/war_standings/, msg => {
 bot.onText(/\/members/, msg => {
   const chatId = msg.chat.id;
   getMembers(chatId);
+});
+
+bot.onText(/\/donations/, msg => {
+  const chatId = msg.chat.id;
+  getMembersByDonations(chatId);
 });
 
 bot.onText(/get_chests/, (msg, match) => {
