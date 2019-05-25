@@ -2,14 +2,12 @@ const fetch = require("node-fetch");
 
 const bot = require("../bot/bot");
 const constants = require("./../../constants");
-const chestSort = require("./../../utils/chests_sort");
 
 const url = constants.BASE_URL;
 const player = constants.ENDPOINTS.player;
 const options = constants.OPTIONS;
 
 const getChests = (chatId, player_tag) => {
-  console.log(player_tag);
   if (!player_tag) {
     bot.sendMessage(chatId, "Invalid player tag");
     return;
@@ -22,6 +20,22 @@ const getChests = (chatId, player_tag) => {
     .catch(error => {
       bot.sendMessage(chatId, error.message);
     });
+};
+
+const chestSort = chests => {
+  let { upcoming, ...others } = chests;
+  let keyChest = {};
+  let numbers = [];
+  for (chest in others) {
+    keyChest[others[chest]] = chest;
+    numbers = [...numbers, others[chest]];
+  }
+  numbers = numbers.sort((a, b) => (a < b ? -1 : 1));
+  return (
+    upcoming.join("\n") +
+    "\n" +
+    numbers.map(number => `${keyChest[number]} +${number}`).join("\n")
+  );
 };
 
 module.exports = getChests;

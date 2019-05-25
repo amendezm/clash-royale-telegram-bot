@@ -40,7 +40,7 @@ const toStandingsArray = array => {
     return a > b.participants ? a : b.participants;
   }, 0);
   return array.map(clan => {
-    return `${fillName(clan.name, maxName)}________left - ${maxParticipants -
+    return `${fillName(clan.name, maxName)}______left - ${maxParticipants -
       clan.battles} / wins - ${clan.wins}`;
   });
 };

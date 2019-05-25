@@ -10,7 +10,6 @@ const tag = constants.CLAN_TAG;
 const options = constants.OPTIONS;
 
 const getCollectionDay = chatId => {
-  console.log(`${url}${clan}${tag}/war`);
   fetch(`${url}${clan}${tag}/war`, options)
     .then(res => res.json())
     .then(data => {
@@ -23,8 +22,12 @@ const getCollectionDay = chatId => {
         played: participant.collectionDayBattlesPlayed
       }));
     })
-    .then(array =>
-      array.map(obj => [obj.name, `${obj.cards}`, `${obj.played}`])
+    .then(participants =>
+      participants.map(participant => [
+        participant.name,
+        `${participant.cards}`,
+        `${participant.played}`
+      ])
     )
     .then(resp => collectionDayFormat(resp))
     .then(resp => {

@@ -22,8 +22,13 @@ const getWarDay = chatId => {
         cards: participant.cardsEarned
       }));
     })
-    .then(array =>
-      array.map(obj => [obj.name, `${obj.wins}`, `${obj.battles}`, obj.cards])
+    .then(participants =>
+      participants.map(participant => [
+        participant.name,
+        `${participant.wins}`,
+        `${participant.battles}`,
+        participant.cards
+      ])
     )
     .then(resp => warDayFormat(resp))
     .then(resp => {

@@ -19,10 +19,14 @@ const getMembers = chatId => {
         trophies: member.trophies
       }));
     })
-    .then(array =>
-      array.map(obj => [`Lvl ${obj.level}`, obj.name, `${obj.trophies}`])
+    .then(members =>
+      members.map(member => [
+        `Lvl ${member.level}`,
+        member.name,
+        `${member.trophies}`
+      ])
     )
-    .then(array => membersFormat(array))
+    .then(members => membersFormat(members))
     .then(resp => {
       bot.sendMessage(chatId, resp.join("\n"));
     })
