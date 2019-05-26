@@ -7,7 +7,8 @@ const membersTags = {
   Daniel: "YOJYJOOCP",
   Malcolm: "PGPJY2JUP",
   "Daniel Enrique": "P89GCRYY8",
-  Antonio: "PL200JL8R"
+  Antonio: "PL200JL8R",
+  Carlosevs99: "PY82YL0RV"
 };
 
 module.exports = membersTags;

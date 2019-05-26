@@ -8,20 +8,20 @@ const clan = constants.ENDPOINTS.clan;
 const clan_tag = constants.CLAN_TAG;
 const options = constants.OPTIONS;
 
-const getDonations = chatId => {
+const getDonationsDelta = chatId => {
   fetch(`${url}${clan}${clan_tag}`, options)
     .then(res => res.json())
     .then(data => {
       return data.members.map(member => ({
         name: member.name,
-        donations: member.donations
+        donationsDelta: member.donationsDelta
       }));
     })
     .then(members =>
-      members.sort((a, b) => (a.donations < b.donations ? 1 : -1))
+      members.sort((a, b) => (a.donationsDelta < b.donationsDelta ? 1 : -1))
     )
     .then(members =>
-      members.map(member => donationsFormat(member.name, member.donations))
+      members.map(member => donationsFormat(member.name, member.donationsDelta))
     )
     .then(resp => {
       bot.sendMessage(chatId, resp.join("\n"));
@@ -36,7 +36,7 @@ const donationsFormat = (name, donations) => {
   for (let i = donated.length; i < 4; i++) {
     donated = " " + donated;
   }
-  return `${donated} -- ${name}`;
+  return `${donated} => ${name}`;
 };
 
-module.exports = getDonations;
+module.exports = getDonationsDelta;

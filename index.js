@@ -4,7 +4,8 @@ const getCollectionDay = require("./services/collection_day");
 const getWarDay = require("./services/war_day");
 const getWarStandings = require("./services/war_standings");
 const getMembers = require("./services/members");
-const getMembersByDonations = require("./services/donations");
+const getDonations = require("./services/donations");
+const getDonationsDelta = require("./services/donations_delta");
 const getChests = require("./services/player/chests");
 const getFavoriteCard = require("./services/player/favorite_card");
 const getBattles = require("./services/clan_battles");
@@ -54,19 +55,33 @@ bot.onText(/\/members/, msg => {
   getMembers(chatId);
 });
 
-bot.onText(/\/donations/, msg => {
+bot.onText(/\/donations_rank/, msg => {
   const chatId = msg.chat.id;
-  getMembersByDonations(chatId);
+  getDonations(chatId);
 });
 
-bot.onText(/get_chests/, (msg, match) => {
+bot.onText(/\/donations_delta_rank/, msg => {
+  const chatId = msg.chat.id;
+  getDonationsDelta(chatId);
+});
+
+bot.onText(/get_chests (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   getChests(chatId, match[1] || membersTags[msg.from.first_name] || "");
 });
+bot.onText(/get_chests@CubanFightersBot/, msg => {
+  const chatId = msg.chat.id;
+  getChests(chatId, membersTags[msg.from.first_name]);
+});
 
-bot.onText(/\/get_favorite_card/, (msg, match) => {
+bot.onText(/\/get_favorite_card (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   getFavoriteCard(chatId, match[1] || membersTags[msg.from.first_name] || "");
+});
+
+bot.onText(/\/get_favorite_card@CubanFightersBot/, msg => {
+  const chatId = msg.chat.id;
+  getFavoriteCard(chatId, membersTags[msg.from.first_name]);
 });
 
 bot.onText(/my_tag/, msg => {
