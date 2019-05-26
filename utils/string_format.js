@@ -61,7 +61,7 @@ const warDayFormat = stringArray => {
     max = sum > max ? sum : max;
   }
   const newStringArray = stringArray.map(string =>
-    toWarString(string, max + 5)
+    toWarString(string, max + 3)
   );
   return newStringArray;
 };

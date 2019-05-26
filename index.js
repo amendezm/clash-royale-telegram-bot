@@ -11,7 +11,7 @@ const getFavoriteCard = require("./services/player/favorite_card");
 const getBattles = require("./services/clan_battles");
 const membersTags = require("./services/player/tags");
 
-// getBattles();
+getBattles();
 
 bot.onText(/\/echo (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
