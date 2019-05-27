@@ -36,7 +36,7 @@ const donationsFormat = (name, donations) => {
   for (let i = donated.length; i < 4; i++) {
     donated = " " + donated;
   }
-  return `${donated} -- ${name}`;
+  return `${donated} => ${name}`;
 };
 
 module.exports = getDonations;

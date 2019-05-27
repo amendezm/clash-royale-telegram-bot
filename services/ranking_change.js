@@ -10,7 +10,7 @@ const options = constants.OPTIONS;
 
 let actualMembers = [];
 
-const in_and_outs = () => {
+const rankingChange = () => {
   setInterval(() => {
     fetch(`${url}${clan}${clan_tag}`, options)
       .then(res => res.json())
@@ -27,22 +27,27 @@ const in_and_outs = () => {
       })
       .catch(err => {
         // bot.sendMessage(-1001375845440, err.message);
+        console.log(err);
       });
   }, 10000);
 };
 
 const compareMembers = (before, after) => {
-  if (!actualMembers.length || before.length === after.length) {
+  if (!actualMembers.length) {
     return [];
-  } else if (before.length > after.length) {
-    return before
-      .filter(member => after.indexOf(member) === -1)
-      .map(member => `${member} has left the clan`);
-  } else {
-    return after
-      .filter(member => before.indexOf(member) === -1)
-      .map(member => `${member} has joined the clan`);
   }
+  let tester = before.length < after.length ? before : after;
+  let tester = tester.filter(
+    memberName => before.indexOf(memberName) !== after.indexOf(memberName)
+  );
+  if (!tester.length) {
+    return [];
+  }
+  let tester = tester.map(memberName => {
+    const quantity = before.indexOf(memberName) - after.indexOf(memberName);
+    return `memberName => ${quantity > 0 ? `+${quantity}` : quantity}`;
+  });
+  return ["Ranking has changed", ...tester];
 };
 
-module.exports = in_and_outs;
+module.exports = rankingChange;

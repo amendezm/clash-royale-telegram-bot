@@ -8,7 +8,7 @@ const collectionDayFormat = stringArray => {
     max = sum > max ? sum : max;
   }
   const newStringArray = stringArray.map(string =>
-    toCollectionString(string, max + 10)
+    toCollectionString(string, max + 4)
   );
   return newStringArray;
 };
