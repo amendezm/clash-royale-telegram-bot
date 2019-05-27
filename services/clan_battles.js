@@ -22,13 +22,10 @@ console.log(utc);
 
 const getBattles = () => {
   setInterval(() => {
-    console.log("dsdgsd");
     fetch(`${url}${clan}${tag}/battles?type=all&page=0&max=3`, options)
       .then(res => res.json())
       .then(battles => battles.filter(battle => battle.utcTime > utc))
       .then(battles => {
-        console.log("enter");
-        console.log(JSON.stringify(battles));
         battles.forEach(battle => {
           bot.sendMessage(
             -1001375845440,
@@ -38,11 +35,11 @@ const getBattles = () => {
           );
         });
         utc = battles.length ? battles[0].utcTime : utc;
-        console.log(utc);
         if (battles.length) console.log(battles[0].utcTime);
       })
       .catch(err => {
         // bot.sendMessage(-1001375845440, err.message);
+        console.log(err.message);
       });
   }, 30000);
 };

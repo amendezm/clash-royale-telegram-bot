@@ -9,9 +9,11 @@ const getDonationsDelta = require("./services/donations_delta");
 const getChests = require("./services/player/chests");
 const getFavoriteCard = require("./services/player/favorite_card");
 const getBattles = require("./services/clan_battles");
+const in_and_outs = require("./services/in_and_outs");
 const membersTags = require("./services/player/tags");
 
 getBattles();
+in_and_outs();
 
 bot.onText(/\/echo (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
