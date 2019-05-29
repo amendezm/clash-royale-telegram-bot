@@ -28,11 +28,11 @@ const in_and_outs = () => {
       .catch(err => {
         // bot.sendMessage(-1001375845440, err.message);
       });
-  }, 10000);
+  }, 5000);
 };
 
 const compareMembers = (before, after) => {
-  if (!actualMembers.length || before.length === after.length) {
+  if (!before.length || before.length === after.length) {
     return [];
   } else if (before.length > after.length) {
     return before

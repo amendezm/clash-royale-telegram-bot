@@ -13,7 +13,7 @@ const inAndOuts = require("./services/in_and_outs");
 const rankingChange = require("./services/ranking_change");
 const membersTags = require("./services/player/tags");
 
-getBattles();
+// getBattles();
 inAndOuts();
 rankingChange();
 

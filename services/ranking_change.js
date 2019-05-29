@@ -14,7 +14,9 @@ const rankingChange = () => {
   setInterval(() => {
     fetch(`${url}${clan}${clan_tag}`, options)
       .then(res => res.json())
-      .then(data => data.members.map(member => member.name))
+      .then(data => {
+        return data.members.map(member => member.name);
+      })
       .then(members => {
         let save = actualMembers;
         actualMembers = members;
@@ -29,23 +31,23 @@ const rankingChange = () => {
         // bot.sendMessage(-1001375845440, err.message);
         console.log(err);
       });
-  }, 10000);
+  }, 5000);
 };
 
 const compareMembers = (before, after) => {
-  if (!actualMembers.length) {
+  if (!before.length) {
     return [];
   }
   let tester = before.length < after.length ? before : after;
-  let tester = tester.filter(
+  tester = tester.filter(
     memberName => before.indexOf(memberName) !== after.indexOf(memberName)
   );
   if (!tester.length) {
     return [];
   }
-  let tester = tester.map(memberName => {
+  tester = tester.map(memberName => {
     const quantity = before.indexOf(memberName) - after.indexOf(memberName);
-    return `memberName => ${quantity > 0 ? `+${quantity}` : quantity}`;
+    return `${memberName} => ${quantity > 0 ? `+${quantity}` : quantity}`;
   });
   return ["Ranking has changed", ...tester];
 };
