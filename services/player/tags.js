@@ -1,14 +1,20 @@
 const membersTags = {
-  "Alexis David": "P2V98JU8V",
-  "!JOse": "",
-  "Abel Antonio": "9JR8LJPJG",
+  "684020468": "P2V98JU8V",
+  "767635086": "PPP90U20C",
+  "565407545": "9JR8LJPJG",
   Eduardo: "PPCUYL2GQ",
-  "Daniel Ivan": "PRGVG0J2U",
-  Daniel: "YOJYJOOCP",
-  Malcolm: "PGPJY2JUP",
+  "376717899": "PRGVG0J2U",
+  "876379230": "YOJYJOOCP",
+  "690279576": "PGPJY2JUP",
   "Daniel Enrique": "P89GCRYY8",
-  Antonio: "PL200JL8R",
-  Carlosevs99: "PY82YL0RV"
+  "588100441": "PL200JL8R",
+  Carlosevs99: "PY82YL0RV",
+  "752783683":"PL9C8CGRR",
+  Marcel: "P90VGJVUQ",
+  "753878800":"P8P9CURP0",
+  "703626286":"Y9PQRGLCY",
+  "728832006": "PPCVQYLYQ",
+  "493129930":"P2UCG9YQG"
 };
 
 module.exports = membersTags;
